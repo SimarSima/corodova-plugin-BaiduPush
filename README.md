@@ -12,3 +12,5 @@ cordova plugin remove simar.android.BaiduPushCordovaPluginv
 ```
 ## Use
 BaiduPushCordovaPlugin.startWork();
+
+# Haven't been tested!!!!
