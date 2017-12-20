@@ -10,3 +10,5 @@ cordova plugin add https://github.com/SimarSima/corodova-plugin-BaiduPush.git --
 ```shell
 cordova plugin remove simar.android.BaiduPushCordovaPluginv
 ```
+## Use
+BaiduPushCordovaPlugin.startWork();
