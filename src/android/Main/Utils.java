@@ -1,4 +1,4 @@
-package com.example.administrator.firebasetest;
+package cordova.plugin.baiduPush;
 
 import android.content.Context;
 import android.content.SharedPreferences;
