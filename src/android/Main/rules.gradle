@@ -1,0 +1,5 @@
+dependencies {
+    compile files('libs/galaxy.jar')
+    compile files('libs/pushservice-6.0.0.64.jar')
+    compile files('libs/ufosdk-android-1.7.13.jar')
+}
