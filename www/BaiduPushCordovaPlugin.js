@@ -5,4 +5,4 @@ var BaiduPushCordovaPlugin = {
         exec(success, error, "BaiduPushCordovaPlugin", "startWork", [arg0]);
     }
 }
-module.exports = androidShowPDFPlugin;
+module.exports = BaiduPushCordovaPlugin;
