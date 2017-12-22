@@ -10,7 +10,7 @@
 	<platform name="android">
 		<config-file parent="/*" target="res/xml/config.xml">
 			<feature name="BaiduPushCordovaPlugin">
-				<param name="android-package" value="simar.android.BaiduPushCordovaPlugin.BaiduPushCordovaPlugin" />
+				<param name="android-package" value="cordova.plugin.baiduPush.BaiduPushCordovaPlugin" />
 			</feature>
 		</config-file>
 		<config-file parent="/*" target="AndroidManifest.xml">
