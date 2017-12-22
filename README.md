@@ -10,7 +10,15 @@ cordova plugin add https://github.com/SimarSima/corodova-plugin-BaiduPush.git --
 ```shell
 cordova plugin remove simar.android.BaiduPushCordovaPlugin
 ```
-## Use
-BaiduPushCordovaPlugin.startWork();
+## Usage
+* JS
+```js
+    BaiduPushCordovaPlugin.startWork();
+```
+* Ts
+``` ts
+     declare let cordova: any; //On the top of your ts file
+     cordova.plugins.BaiduPushCordovaPlugin.startWork();//At the where you need
 
-# Haven't been tested!!!!
+```
+# Haven't been tested!!!!Usagek
