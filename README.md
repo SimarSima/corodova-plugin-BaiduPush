@@ -1,4 +1,7 @@
 # corodova-plugin-BaiduPush
+
+This plugin is used to get the data from Baidu Push.Can't show the dialog on device;
+
 ## Installation
 
 ```shell
