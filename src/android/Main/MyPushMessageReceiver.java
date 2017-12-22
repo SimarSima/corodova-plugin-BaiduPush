@@ -2,10 +2,10 @@ package cordova.plugin.baiduPush;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
 
+import org.apache.cordova.LOG;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MyPushMessageReceiver extends PushMessageReceiver {
 
-  public static final String TAG = "ForTest";
+  public static final String TAG = "BaiduPushCodovaPlugin";
 
   /**
    * 调用PushManager.startWork后，sdk将对push
@@ -38,13 +38,13 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String responseString = "onBind errorCode=" + errorCode + " appid=" + appid + " userId=" +
       userId
       + " channelId=" + channelId + " requestId=" + requestId;
-    Log.d(TAG, "ForTest " + responseString);
+    LOG.d(TAG, responseString);
 
     if (errorCode == 0) {
       // 绑定成功
-      Log.d(TAG, "ForTest 绑定成功");
+      LOG.d(TAG, TAG + "On Bind OK");
     } else {
-      Log.e(TAG, "ForTest" + errorCode);
+      LOG.e(TAG, TAG + "On Bind Error" + errorCode);
     }
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
     updateContent(context, responseString);
@@ -62,7 +62,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String messageString = "透传消息 onMessage=\"" + message + "\" customContentString=" +
       customContentString;
 
-    Log.d(TAG, "ForTest" + messageString);
+    LOG.d(TAG, "ForTest" + messageString);
 
     // 自定义内容获取方式，mykey和myvalue对应透传消息推送时自定义内容中设置的键和值
     if (!TextUtils.isEmpty(customContentString)) {
@@ -98,7 +98,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String notifyString = "通知到达 onNotificationArrived  title=\"" + title + "\" description=\"" +
       description
       + "\" customContent=" + customContentString;
-    Log.d(TAG, notifyString);
+    LOG.d(TAG, notifyString);
 
     // 自定义内容获取方式，mykey和myvalue对应通知推送时自定义内容中设置的键和值
     if (!TextUtils.isEmpty(customContentString)) {
@@ -133,7 +133,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String notifyString = "通知点击 onNotificationClicked title=\"" + title + "\" description=\"" +
       description
       + "\" customContent=" + customContentString;
-    Log.d(TAG, notifyString);
+    LOG.d(TAG, notifyString);
 
     // 自定义内容获取方式，mykey和myvalue对应通知推送时自定义内容中设置的键和值
     if (!TextUtils.isEmpty(customContentString)) {
@@ -170,7 +170,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String responseString = "onSetTags errorCode=" + errorCode + " successTags=" + successTags +
       " failTags="
       + failTags + " requestId=" + requestId;
-    Log.d(TAG, responseString);
+    LOG.d(TAG, responseString);
 
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
     updateContent(context, responseString);
@@ -192,7 +192,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     String responseString = "onDelTags errorCode=" + errorCode + " successTags=" + successTags +
       " failTags="
       + failTags + " requestId=" + requestId;
-    Log.d(TAG, responseString);
+    LOG.d(TAG, responseString);
 
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
     updateContent(context, responseString);
@@ -209,7 +209,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
   @Override
   public void onListTags(Context context, int errorCode, List<String> tags, String requestId) {
     String responseString = "onListTags errorCode=" + errorCode + " tags=" + tags;
-    Log.d(TAG, responseString);
+    LOG.d(TAG, responseString);
 
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
     updateContent(context, responseString);
@@ -225,19 +225,19 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
   @Override
   public void onUnbind(Context context, int errorCode, String requestId) {
     String responseString = "onUnbind errorCode=" + errorCode + " requestId = " + requestId;
-    Log.d(TAG, responseString);
+    LOG.d(TAG, responseString);
 
     if (errorCode == 0) {
       // 解绑定成功
-      Log.d(TAG, "解绑成功");
+      LOG.d(TAG, "onUnbind OK");
     }
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
     updateContent(context, responseString);
   }
 
   private void updateContent(Context context, String content) {
-    Log.d(TAG, "updateContent");
-    Log.d(TAG, "ForTest Message" + content);
+    LOG.d(TAG, "updateContent");
+    LOG.d(TAG, "ForTest Message" + content);
     //        String logText = "" + Utils.logStringCache;
     //
     //        if (!logText.equals("")) {
