@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin id="simar.android.BaiduPushCordovaPlugin" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-	<name>
-		BaiduPushCordovaPlugin
-	</name>
+<plugin id="simar.android.BaiduPushCordovaPlugin" version="0.0.1" 
+	xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>BaiduPushCordovaPlugin</name>
 	<js-module name="BaiduPushCordovaPlugin" src="www/BaiduPushCordovaPlugin.js">
 		<clobbers target="cordova.plugins.BaiduPushCordovaPlugin" />
 	</js-module>
@@ -85,8 +85,7 @@
 			<activity android:name="com.baidu.ufosdk.ui.FeedbackInputActivity" />
 			<activity android:name="com.baidu.ufosdk.ui.FeedbackHotActivity" />
 		</config-file>
-		<config-file target="libs" parent="/*">
-		</config-file>
+		<config-file target="libs" parent="/*"></config-file>
 		<lib-file src="src/android/Main/libs/galaxy.jar" />
 		<lib-file src="src/android/Main/libs/pushservice-6.0.0.64.jar" />
 		<lib-file src="src/android/Main/libs/ufosdk-android-1.7.13.jar" />
