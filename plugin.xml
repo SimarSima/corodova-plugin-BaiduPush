@@ -99,6 +99,7 @@
 		<source-file src="src/android/Main/MyPushMessageReceiver.java" target-dir="src/cordova/plugin/baiduPush" />
 		<source-file src="src/android/Main/Utils.java" target-dir="src/cordova/plugin/baiduPush" />
 		<source-file src="src/android/BaiduPushCordovaPlugin.java" target-dir="src/cordova/plugin/baiduPush"/>
+		<source-file src="src/android/Main/MessageEvent.java"/>
 		<framework src="src/android/Main/rules.gradle" custom="true" type="gradleReference" />
 	</platform>
 </plugin>

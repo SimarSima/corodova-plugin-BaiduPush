@@ -5,6 +5,8 @@ import com.baidu.android.pushservice.PushManager;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.LOG;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -31,5 +33,17 @@ public class BaiduPushCordovaPlugin extends CordovaPlugin {
     } else {
       callbackContext.error("Expected one non-empty string argument.");
     }
+  }
+  @Subscribe
+  public void handleSomethingElse(MessageEvent event) {
+    switch (event.getAction()){
+      case MessageEvent.ACTION_ON_BIND:
+        LOG.d("DDD",event.getErrorCode()+"");
+        break;
+      default:
+        break;
+    }
+
+
   }
 }

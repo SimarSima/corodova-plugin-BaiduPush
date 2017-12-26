@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.baidu.android.pushservice.PushMessageReceiver;
 
 import org.apache.cordova.LOG;
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,7 +40,10 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
       userId
       + " channelId=" + channelId + " requestId=" + requestId;
     LOG.d(TAG, responseString);
-
+    EventBus.getDefault().register(this);
+    MessageEvent event=new MessageEvent();
+    event.setErrorCode(errorCode);
+    event.setAction(event.ACTION_ON_BIND);
     if (errorCode == 0) {
       // 绑定成功
       LOG.d(TAG, TAG + "On Bind OK");
@@ -47,7 +51,8 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
       LOG.e(TAG, TAG + "On Bind Error" + errorCode);
     }
     // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
-    updateContent(context, responseString);
+    updateContent(event);
+
   }
 
   /**
@@ -226,7 +231,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
   public void onUnbind(Context context, int errorCode, String requestId) {
     String responseString = "onUnbind errorCode=" + errorCode + " requestId = " + requestId;
     LOG.d(TAG, responseString);
-
+    EventBus.getDefault().unregister(this);
     if (errorCode == 0) {
       // 解绑定成功
       LOG.d(TAG, "onUnbind OK");
@@ -235,24 +240,11 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     updateContent(context, responseString);
   }
 
+  private void updateContent(MessageEvent event) {
+    EventBus.getDefault().post(event);
+  }
   private void updateContent(Context context, String content) {
     LOG.d(TAG, "updateContent");
     LOG.d(TAG, "ForTest Message" + content);
-    //        String logText = "" + Utils.logStringCache;
-    //
-    //        if (!logText.equals("")) {
-    //            logText += "\n";
-    //        }
-    //
-    //        SimpleDateFormat sDateFormat = new SimpleDateFormat("HH-mm-ss");
-    //        logText += sDateFormat.format(new Date()) + ": ";
-    //        logText += content;
-    //
-    //        Utils.logStringCache = logText;
-    //
-    //        Intent intent = new Intent();
-    ////        intent.setClass(context.getApplicationContext(), PushDemoActivity.class);
-    //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    //        context.getApplicationContext().startActivity(intent);
   }
 }
