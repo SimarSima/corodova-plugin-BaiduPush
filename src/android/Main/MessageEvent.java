@@ -7,7 +7,34 @@ package cordova.plugin.baiduPush;
 public class MessageEvent {
   public static final int ACTION_ON_BIND = 0;
   private int errorCode;
-  private int action;
+  private String errorInfo;
+  private int resultCode;
+  private String resultInfo;
+
+  public String getResultInfo() {
+    return resultInfo;
+  }
+
+  public void setResultInfo(String resultInfo) {
+    this.resultInfo = resultInfo;
+  }
+
+  public String getErrorInfo() {
+    return errorInfo;
+  }
+
+  public void setErrorInfo(String errorInfo) {
+    this.errorInfo = errorInfo;
+  }
+
+
+  public int getResultCode() {
+    return resultCode;
+  }
+
+  public void setResultCode(int resultCode) {
+    this.resultCode = resultCode;
+  }
 
   public int getErrorCode() {
     return errorCode;
@@ -17,11 +44,5 @@ public class MessageEvent {
     this.errorCode = errorCode;
   }
 
-  public int getAction() {
-    return action;
-  }
 
-  public void setAction(int action) {
-    this.action = action;
-  }
 }

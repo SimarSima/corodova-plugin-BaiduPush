@@ -1,12 +1,13 @@
 package cordova.plugin.baiduPush;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
 
+import org.apache.cordova.CallbackContext;
 import org.apache.cordova.LOG;
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +20,7 @@ import java.util.List;
 public class MyPushMessageReceiver extends PushMessageReceiver {
 
   public static final String TAG = "BaiduPushCodovaPlugin";
+  private CallbackContext callbackContext;
 
   /**
    * 调用PushManager.startWork后，sdk将对push
@@ -40,18 +42,17 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
       userId
       + " channelId=" + channelId + " requestId=" + requestId;
     LOG.d(TAG, responseString);
-    EventBus.getDefault().register(this);
-    MessageEvent event=new MessageEvent();
+    MessageEvent event = new MessageEvent();
     event.setErrorCode(errorCode);
-    event.setAction(event.ACTION_ON_BIND);
     if (errorCode == 0) {
       // 绑定成功
       LOG.d(TAG, TAG + "On Bind OK");
+      event.setResultInfo(responseString);
+      callbackContext.success(responseString);
     } else {
       LOG.e(TAG, TAG + "On Bind Error" + errorCode);
+      callbackContext.error(errorCode);
     }
-    // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
-    updateContent(event);
 
   }
 
@@ -231,7 +232,6 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
   public void onUnbind(Context context, int errorCode, String requestId) {
     String responseString = "onUnbind errorCode=" + errorCode + " requestId = " + requestId;
     LOG.d(TAG, responseString);
-    EventBus.getDefault().unregister(this);
     if (errorCode == 0) {
       // 解绑定成功
       LOG.d(TAG, "onUnbind OK");
@@ -240,11 +240,21 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
     updateContent(context, responseString);
   }
 
-  private void updateContent(MessageEvent event) {
-    EventBus.getDefault().post(event);
-  }
+
   private void updateContent(Context context, String content) {
-    LOG.d(TAG, "updateContent");
-    LOG.d(TAG, "ForTest Message" + content);
+    Intent intent = new Intent();
+    intent.setClass(context, BaiduPushCordovaPlugin.class);
+    intent.setFlags(MessageEvent.ACTION_ON_BIND);
+//    context.startActivityForResult(content,);
+//    PluginResult result=new PluginResult();
+
+  }
+
+  public CallbackContext getCallbackContext() {
+    return callbackContext;
+  }
+
+  public void setCallbackContext(CallbackContext callbackContext) {
+    this.callbackContext = callbackContext;
   }
 }
