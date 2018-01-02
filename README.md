@@ -35,5 +35,4 @@ cordova plugin remove simar.android.BaiduPushCordovaPlugin
 
 ```
 
-# Haven't been tested!!!!
 * The bind has been test OK!
