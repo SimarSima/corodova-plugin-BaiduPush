@@ -34,4 +34,6 @@ cordova plugin remove simar.android.BaiduPushCordovaPlugin
      cordova.plugins.BaiduPushCordovaPlugin.startWork();//At the where you need
 
 ```
+
 # Haven't been tested!!!!
+* The bind has been test OK!

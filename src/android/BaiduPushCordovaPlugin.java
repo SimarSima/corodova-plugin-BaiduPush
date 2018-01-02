@@ -14,15 +14,19 @@ import org.json.JSONException;
 public class BaiduPushCordovaPlugin extends CordovaPlugin {
 
   @Override
-  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws
+  public boolean execute(String action, JSONArray args, final CallbackContext callbackContext)
+    throws
     JSONException {
     if (action.equals("startWork")) {
-      MyPushMessageReceiver receiver = new MyPushMessageReceiver();
-      receiver.setCallbackContext(callbackContext);
-      PushManager.startWork(cordova.getActivity(), PushConstants.LOGIN_TYPE_API_KEY, Utils
-        .getMetaValue(cordova.getActivity(), "api_key")
-      );
-
+      cordova.getThreadPool().execute(new Runnable() {
+        @Override
+        public void run() {
+          MessageEvent.callbackContext=callbackContext;
+          PushManager.startWork(cordova.getActivity(), PushConstants.LOGIN_TYPE_API_KEY, Utils
+            .getMetaValue(cordova.getActivity(), "api_key")
+          );
+        }
+      });
       return true;
     }
     return false;

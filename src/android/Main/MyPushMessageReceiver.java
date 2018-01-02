@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
 
-import org.apache.cordova.CallbackContext;
 import org.apache.cordova.LOG;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +19,6 @@ import java.util.List;
 public class MyPushMessageReceiver extends PushMessageReceiver {
 
   public static final String TAG = "BaiduPushCodovaPlugin";
-  private CallbackContext callbackContext;
 
   /**
    * 调用PushManager.startWork后，sdk将对push
@@ -48,10 +46,10 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
       // 绑定成功
       LOG.d(TAG, TAG + "On Bind OK");
       event.setResultInfo(responseString);
-      callbackContext.success(responseString);
+      MessageEvent.callbackContext.success(responseString);
     } else {
       LOG.e(TAG, TAG + "On Bind Error" + errorCode);
-      callbackContext.error(errorCode);
+      MessageEvent.callbackContext.error(errorCode);
     }
 
   }
@@ -250,11 +248,5 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
 
   }
 
-  public CallbackContext getCallbackContext() {
-    return callbackContext;
-  }
 
-  public void setCallbackContext(CallbackContext callbackContext) {
-    this.callbackContext = callbackContext;
-  }
 }

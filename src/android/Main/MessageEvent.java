@@ -1,5 +1,7 @@
 package cordova.plugin.baiduPush;
 
+import org.apache.cordova.CallbackContext;
+
 /**
  * Created by Administrator on 12/26/2017.
  */
@@ -10,6 +12,7 @@ public class MessageEvent {
   private String errorInfo;
   private int resultCode;
   private String resultInfo;
+  public static CallbackContext callbackContext;
 
   public String getResultInfo() {
     return resultInfo;
