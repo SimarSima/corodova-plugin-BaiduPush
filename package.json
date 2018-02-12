@@ -1,0 +1,25 @@
+{
+  "name": "simar.android.BaiduPushCordovaPlugin",
+  "version": "0.0.1",
+  "description": "This plugin is used to get the data from Baidu Push.Can't show the notification on device;",
+  "cordova": {
+    "id": "simar.android.BaiduPushCordovaPlugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimarSima/corodova-plugin-BaiduPush.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Simar",
+  "license": "LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/SimarSima/corodova-plugin-BaiduPush/issues"
+  },
+  "homepage": "https://github.com/SimarSima/corodova-plugin-BaiduPush#readme"
+}
