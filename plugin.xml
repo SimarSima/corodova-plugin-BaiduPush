@@ -3,6 +3,9 @@
 	xmlns="http://apache.org/cordova/ns/plugins/1.0" 
 	xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>BaiduPushCordovaPlugin</name>
+	<engines>
+		<engine name="cordova-android" version=">=6.3.0" />
+	</engines>
 	<js-module name="BaiduPushCordovaPlugin" src="www/BaiduPushCordovaPlugin.js">
 		<clobbers target="cordova.plugins.BaiduPushCordovaPlugin" />
 	</js-module>
